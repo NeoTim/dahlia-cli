@@ -65,8 +65,7 @@ function createAppDir(root: string) {
 async function checkAppDir(root: string, appName: string) {
   const projectDirFiles = fs.readdirSync(root)
   const conflictFiles = projectDirFiles.reduce(
-    (result: string[], cur) =>
-      filesToCheck.includes(cur) ? [...result, cur] : result,
+    (result: string[], cur) => (filesToCheck.includes(cur) ? [...result, cur] : result),
     [],
   )
 
@@ -82,9 +81,7 @@ function createApp(root: string, templateDir: string) {
   log()
   console.log('Installing packages. This might take a couple of minutes.')
   console.log(
-    `Installing ${chalk.cyan('react')}, ${chalk.cyan(
-      'react-dom',
-    )}, and ${chalk.cyan('dahlia')}...`,
+    `Installing ${chalk.cyan('react')}, ${chalk.cyan('react-dom')}, and ${chalk.cyan('dahlia')}...`,
   )
   console.log()
 
@@ -148,12 +145,8 @@ function showTips(root: string, appName: string) {
   console.log('    Starts the test runner.')
   console.log()
   console.log(chalk.cyan(`  ${displayedCommand} ${useYarn ? '' : 'run '}eject`))
-  console.log(
-    '    Removes this tool and copies build dependencies, configuration files',
-  )
-  console.log(
-    '    and scripts into the app directory. If you do this, you can’t go back!',
-  )
+  console.log('    Removes this tool and copies build dependencies, configuration files')
+  console.log('    and scripts into the app directory. If you do this, you can’t go back!')
   console.log()
   console.log('We suggest that you begin by typing:')
   console.log()
