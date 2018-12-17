@@ -1,70 +1,78 @@
-dahlia-cli
-==========
+# dahlia-cli
 
-
-
-[![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
-[![Version](https://img.shields.io/npm/v/dahlia-cli.svg)](https://npmjs.org/package/dahlia-cli)
-[![Downloads/week](https://img.shields.io/npm/dw/dahlia-cli.svg)](https://npmjs.org/package/dahlia-cli)
-[![License](https://img.shields.io/npm/l/dahlia-cli.svg)](https://github.com/forsigner/dahlia-cli/blob/master/package.json)
+> CLI tool for Dahlia
 
 <!-- toc -->
+* [Installation](#installation)
 * [Usage](#usage)
 * [Commands](#commands)
 <!-- tocstop -->
-# Usage
-<!-- usage -->
+
+## Installation
+
 ```sh-session
-$ npm install -g dahlia-cli
-$ dahlia COMMAND
-running command...
-$ dahlia (-v|--version|version)
-dahlia-cli/0.0.0 darwin-x64 node-v10.9.0
-$ dahlia --help [COMMAND]
-USAGE
-  $ dahlia COMMAND
-...
+$ yarn install -g dahlia-cli
 ```
-<!-- usagestop -->
-# Commands
-<!-- commands -->
-* [`dahlia hello [FILE]`](#dahlia-hello-file)
-* [`dahlia help [COMMAND]`](#dahlia-help-command)
 
-## `dahlia hello [FILE]`
+## Usage
 
-describe the command here
+```sh-session
+$ yarn global add dahlia-cli
+$ dh new my-app
+$ cd my-app
+$ dh dev
+```
+
+## Commands
+
+### `dh help`
+
+```bash
+CLI tool for Dahlia
+
+VERSION
+  dahlia-cli/0.0.0 darwin-x64 node-v10.9.0
+
+USAGE
+  $ dahlia [COMMAND]
+
+COMMANDS
+  generate  Generate page/component/store...
+  help      display help for dahlia
+  new       Create a new Dahlia app
+```
+
+### `dh new`
+
+Create a new Dahlia app
 
 ```
-USAGE
-  $ dahlia hello [FILE]
+Create a new Dahlia app
 
-OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
+USAGE
+  $ dahlia new [APPNAME]
+
+ALIASES
+  $ dahlia n
 
 EXAMPLE
-  $ dahlia hello
-  hello world from ./src/hello.ts!
+  $ dh new my-app
 ```
 
-_See code: [src/commands/hello.ts](https://github.com/forsigner/dahlia-cli/blob/v0.0.0/src/commands/hello.ts)_
 
-## `dahlia help [COMMAND]`
+### `dh generate`
 
-display help for dahlia
+Generate page/component/store...
 
 ```
 USAGE
-  $ dahlia help [COMMAND]
+  $ dahlia generate [TYPE] [NAME]
 
-ARGUMENTS
-  COMMAND  command to show help for
+ALIASES
+  $ dahlia g
 
-OPTIONS
-  --all  see all commands in CLI
+EXAMPLES
+  $ dh generate page Home
+  $ dh generate component Header
+  $ dh generate store todoStore
 ```
-
-_See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v2.1.4/src/commands/help.ts)_
-<!-- commandsstop -->
