@@ -16,7 +16,7 @@ export default class Generate extends Command {
 
     // const name = flags.name || 'world'
 
-    this.log('create dahlia project....')
+    this.log('generating ...')
     this.log('args:', args)
   }
 }

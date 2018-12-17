@@ -15,19 +15,21 @@ export const deps = [
 export const pkg = {
   version: '0.1.0',
   scripts: {
-    start: 'react-scripts start',
-    build: 'react-scripts build',
-    test: 'react-scripts test',
-    eject: 'react-scripts eject',
+    dev: 'dh dev ',
+    build: 'dh build',
+    test: 'dh test',
+    eject: 'dh eject',
   },
   browserslist: ['>0.2%', 'not dead', 'not ie <= 11', 'not op_mini all'],
 }
 
-// Todo
+// TODO: check files
 export const filesToCheck = [
   'package.json',
   'public',
   'src',
   'tsconfig.json',
   'yarn.lock',
+  '.gitignore',
+  'README.md',
 ]
