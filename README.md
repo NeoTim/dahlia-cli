@@ -2,11 +2,16 @@
 
 > CLI tool for Dahlia
 
-<!-- toc -->
-* [Installation](#installation)
-* [Usage](#usage)
-* [Commands](#commands)
-<!-- tocstop -->
+- [Installation](#installation)
+- [Usage](#usage)
+- [Commands](#commands)
+  - [dh help](#dh-help)
+  - [dh new](#dh-new)
+  - [dh generate](#dh-generate)
+  - [dh dev](#dh-dev)
+  - [dh test](#dh-test)
+  - [dh build](#dh-build)
+  - [dh eject](#dh-eject)
 
 ## Installation
 
@@ -61,7 +66,6 @@ EXAMPLE
   $ dh new my-app
 ```
 
-
 ### `dh generate`
 
 ```
@@ -79,7 +83,6 @@ EXAMPLES
   $ dh generate store todoStore
 ```
 
-
 ### `dh dev`
 
 ```
@@ -94,7 +97,6 @@ ALIASES
 EXAMPLE
   $ dh dev
 ```
-
 
 ### `dh test`
 
@@ -111,8 +113,6 @@ EXAMPLE
   $ dh test
 ```
 
-
-
 ### `dh build`
 
 ```
@@ -127,7 +127,6 @@ ALIASES
 EXAMPLE
   $ dh build
 ```
-
 
 ### `dh eject`
 

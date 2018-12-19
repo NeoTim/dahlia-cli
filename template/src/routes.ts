@@ -1,9 +1,9 @@
+import { Routes } from 'dahlia'
 import { Home } from './pages/Home'
 
-export const routes = [
+export const routes: Routes = [
   {
     path: '/',
-    exact: true,
     component: Home,
   },
 ]

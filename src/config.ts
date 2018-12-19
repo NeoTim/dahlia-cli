@@ -7,7 +7,6 @@ export const deps = [
   'dahlia',
   'react@next',
   'react-dom@next',
-  'react-router-dom',
   'react-scripts',
   'typescript',
 ]
