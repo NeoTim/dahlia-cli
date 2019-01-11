@@ -4,9 +4,12 @@ import chalk from 'chalk'
 import fs from 'fs-extra'
 import path from 'path'
 import spawn from 'cross-spawn'
+import download from 'download-git-repo'
 
 import { deps, filesToCheck, pkg } from '../config'
 import { baseDir } from '../lib/utils'
+
+const DAHLIA_TEMPLATE = 'forsigner/dahlia-template'
 
 export default class New extends Command {
   static description = 'Create a new Dahlia app'
@@ -24,7 +27,7 @@ export default class New extends Command {
     try {
       createAppDir(root)
       await checkAppDir(root, appName)
-      createApp(root, templateDir)
+      await createApp(root, templateDir)
       createPkgFile(root, appName)
       await install(root)
       showTips(root, appName)
@@ -76,7 +79,7 @@ async function checkAppDir(root: string, appName: string) {
   }
 }
 
-function createApp(root: string, templateDir: string) {
+async function createApp(root: string, templateDir: string) {
   log(`Creating a new Dahlia app in ${chalk.green(root)}.`)
   log()
   console.log('Installing packages. This might take a couple of minutes.')
@@ -85,7 +88,11 @@ function createApp(root: string, templateDir: string) {
   )
   console.log()
 
-  fs.copySync(templateDir, root)
+  return new Promise((resolve, reject) => {
+    download(DAHLIA_TEMPLATE, root, (err: any) => {
+      err ? reject(err) : resolve()
+    })
+  })
 }
 
 function createPkgFile(root: string, appName: string) {
