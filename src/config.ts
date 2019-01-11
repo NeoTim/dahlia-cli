@@ -1,13 +1,10 @@
 export const deps = [
   '@types/jest',
-  '@types/node',
   '@types/react',
   '@types/react-dom',
-  '@types/react-router-dom',
   'dahlia',
   'react@next',
   'react-dom@next',
-  'react-scripts',
   'typescript',
 ]
 
