@@ -22,12 +22,11 @@ export default class New extends Command {
     const { args } = this.parse(New)
 
     const appName: string = args.appName
-    const templateDir = path.join(baseDir, 'template')
     const root = path.resolve(appName)
     try {
       createAppDir(root)
       await checkAppDir(root, appName)
-      await createApp(root, templateDir)
+      await createApp(root)
       createPkgFile(root, appName)
       await install(root)
       showTips(root, appName)
@@ -79,18 +78,20 @@ async function checkAppDir(root: string, appName: string) {
   }
 }
 
-async function createApp(root: string, templateDir: string) {
-  log(`Creating a new Dahlia app in ${chalk.green(root)}.`)
-  log()
-  console.log('Installing packages. This might take a couple of minutes.')
-  console.log(
-    `Installing ${chalk.cyan('react')}, ${chalk.cyan('react-dom')}, and ${chalk.cyan('dahlia')}...`,
-  )
-  console.log()
-
+async function createApp(root: string) {
   return new Promise((resolve, reject) => {
     download(DAHLIA_TEMPLATE, root, (err: any) => {
-      err ? reject(err) : resolve()
+      if (err) return reject(err)
+      resolve()
+      log(`Creating a new Dahlia app in ${chalk.green(root)}.`)
+      log()
+      console.log('Installing packages. This might take a couple of minutes.')
+      console.log(
+        `Installing ${chalk.cyan('react')}, ${chalk.cyan('react-dom')}, and ${chalk.cyan(
+          'dahlia',
+        )}...`,
+      )
+      console.log()
     })
   })
 }
