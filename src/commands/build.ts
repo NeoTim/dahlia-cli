@@ -1,6 +1,6 @@
-import spawn from 'cross-spawn'
 import { Command } from '@oclif/command'
-import { reactScripts } from '../lib/utils'
+
+import { dahliaConfigPath, reactScriptsModulePath, webpackConfigPath } from '../lib/utils'
 
 export default class New extends Command {
   static description = 'Build project for production'
@@ -8,8 +8,15 @@ export default class New extends Command {
   static examples = [`$ dh build`]
 
   async run() {
-    spawn(reactScripts, ['build'], {
-      stdio: 'inherit',
-    })
+    process.env.NODE_ENV = 'production'
+    const overrides = require(dahliaConfigPath)
+    const webpackConfig = require(webpackConfigPath)
+
+    // override config in memory
+    require.cache[require.resolve(webpackConfigPath)].exports = (env: string) =>
+      overrides.webpack(webpackConfig(env), env)
+
+    // run original script
+    require(`${reactScriptsModulePath}/scripts/build`)
   }
 }
