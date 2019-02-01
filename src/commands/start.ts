@@ -1,4 +1,8 @@
 import { Command } from '@oclif/command'
+import override from 'dahlia-webpack-override'
+import styledJsx from 'dahlia-webpack-styled-jsx'
+import styleComponents from 'dahlia-webpack-styled-components'
+
 import {
   dahliaConfigPath,
   reactScriptsModulePath,
@@ -13,16 +17,23 @@ export default class New extends Command {
 
   async run() {
     process.env.NODE_ENV = process.env.NODE_ENV || 'development'
-    const overrides = require(dahliaConfigPath)
+    const dahliaConfig = require(dahliaConfigPath)
     const webpackConfig = require(webpackConfigPath)
     const devServerConfig = require(devServerConfigPath)
     const devServer =
-      overrides.devServer ||
+      dahliaConfig.devServer ||
       ((configFunction: any) => (proxy: any, allowedHost: any) =>
         configFunction(proxy, allowedHost))
 
-    require.cache[require.resolve(webpackConfigPath)].exports = (env: string) =>
-      overrides.webpack(webpackConfig(env), env)
+    require.cache[require.resolve(webpackConfigPath)].exports = (env: string) => {
+      const config = webpackConfig(env)
+      const newConfig = override(config, env).pipe(
+        styleComponents(),
+        styledJsx(),
+      )
+
+      return dahliaConfig.webpack(newConfig, env)
+    }
 
     require.cache[require.resolve(devServerConfigPath)].exports = devServer(
       devServerConfig,
