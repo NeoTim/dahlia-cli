@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.1.0"></a>
+# [1.1.0](https://github.com/forsigner/dahlia-cli/compare/v1.0.1...v1.1.0) (2019-02-02)
+
+
+### Features
+
+* can custom webpack config ([3fe3577](https://github.com/forsigner/dahlia-cli/commit/3fe3577))
+* support styled-jsx and styled-components ([a959c75](https://github.com/forsigner/dahlia-cli/commit/a959c75))
+* use remate template ([f29efbc](https://github.com/forsigner/dahlia-cli/commit/f29efbc))
+
+
+
 <a name="1.0.1"></a>
 ## [1.0.1](https://github.com/forsigner/dahlia-cli/compare/v1.0.0...v1.0.1) (2018-12-19)
 
