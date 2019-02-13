@@ -11,7 +11,7 @@ export const deps = [
 export const pkg = {
   version: '0.1.0',
   scripts: {
-    dev: 'dh dev ',
+    start: 'dh start ',
     build: 'dh build',
     test: 'dh test',
     eject: 'dh eject',

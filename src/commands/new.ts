@@ -7,7 +7,6 @@ import spawn from 'cross-spawn'
 import download from 'download-git-repo'
 
 import { deps, filesToCheck, pkg } from '../config'
-import { baseDir } from '../lib/utils'
 
 const DAHLIA_TEMPLATE = 'forsigner/dahlia-template'
 

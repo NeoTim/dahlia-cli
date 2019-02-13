@@ -1,3 +1,4 @@
+import fs from 'fs'
 import { Command } from '@oclif/command'
 import override from 'dahlia-webpack-override'
 import styledJsx from 'dahlia-webpack-styled-jsx'
@@ -12,7 +13,6 @@ export default class New extends Command {
 
   async run() {
     process.env.NODE_ENV = 'production'
-    const dahliaConfig = require(dahliaConfigPath)
     const webpackConfig = require(webpackConfigPath)
 
     require.cache[require.resolve(webpackConfigPath)].exports = (env: string) => {
@@ -22,7 +22,14 @@ export default class New extends Command {
         styledJsx(),
       )
 
-      return dahliaConfig.webpack(newConfig, env)
+      if (fs.existsSync(dahliaConfigPath)) {
+        const dahliaConfig = require(dahliaConfigPath)
+        if (dahliaConfig.webpack) {
+          return dahliaConfig.webpack(newConfig, env)
+        }
+        return newConfig
+      }
+      return newConfig
     }
 
     // run original script

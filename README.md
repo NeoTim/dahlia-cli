@@ -8,7 +8,7 @@
   - [dh help](#dh-help)
   - [dh new](#dh-new)
   - [dh generate](#dh-generate)
-  - [dh dev](#dh-dev)
+  - [dh start](#dh-start)
   - [dh test](#dh-test)
   - [dh build](#dh-build)
   - [dh eject](#dh-eject)
@@ -25,7 +25,7 @@ $ yarn install -g dahlia-cli
 $ yarn global add dahlia-cli
 $ dh new my-app
 $ cd my-app
-$ dh dev
+$ dh start
 ```
 
 ## Commands
@@ -83,7 +83,7 @@ EXAMPLES
   $ dh generate store todoStore
 ```
 
-### `dh dev`
+### `dh start`
 
 ```
 Run a dev server for development
@@ -95,7 +95,7 @@ ALIASES
   $ dahlia d
 
 EXAMPLE
-  $ dh dev
+  $ dh start
 ```
 
 ### `dh test`

@@ -23,6 +23,7 @@
     "dahlia-webpack-styled-jsx": "^1.0.1",
     "download-git-repo": "^1.1.0",
     "fs-extra": "^7.0.1",
+    "node-sass": "^4.11.0",
     "react": "^16.8.0-alpha.1",
     "react-dom": "^16.8.0-alpha.1",
     "react-scripts": "^2.1.3",
