@@ -7,6 +7,10 @@ export const projectDir = path.resolve(fs.realpathSync(process.cwd()))
 
 export const dahliaConfigPath = `${projectDir}/dahlia.config.js`
 
+export const tmpDir = `${projectDir}/src/.dahlia`
+
+export const entryPath = `${projectDir}/src/.dahlia/index.tsx`
+
 export const reactScripts = path.join(baseDir, 'node_modules', '.bin', 'react-scripts')
 
 export const reactScriptsModulePath = path.join(baseDir, 'node_modules', 'react-scripts')
