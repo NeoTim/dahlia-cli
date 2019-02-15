@@ -14,7 +14,6 @@ export const pkg = {
     start: 'dh start ',
     build: 'dh build',
     test: 'dh test',
-    eject: 'dh eject',
   },
   browserslist: ['>0.2%', 'not dead', 'not ie <= 11', 'not op_mini all'],
 }
