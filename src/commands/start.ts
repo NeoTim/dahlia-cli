@@ -1,5 +1,4 @@
 import fs from 'fs-extra'
-import path from 'path'
 import { Command } from '@oclif/command'
 import override from 'dahlia-webpack-override'
 import styledJsx from 'dahlia-webpack-styled-jsx'
@@ -7,8 +6,8 @@ import styleComponents from 'dahlia-webpack-styled-components'
 
 import {
   dahliaConfigPath,
-  entryPath,
   tmpDir,
+  entryPath,
   reactScriptsModulePath,
   webpackConfigPath,
   devServerConfigPath,
@@ -22,7 +21,7 @@ function createTmpDir(dir: string) {
 
 export default class Start extends Command {
   static description = 'Run a dev server for development'
-  static aliases = ['d']
+  static aliases = ['s']
   static examples = [`$ dh start`]
 
   async run() {
@@ -48,7 +47,7 @@ export default class Start extends Command {
       const config = webpackConfig(env)
 
       // TODO: update entry
-      config.entry[1] = tmpDir
+      config.entry[1] = entryPath
 
       const newConfig = override(config, env).pipe(
         styleComponents(),
