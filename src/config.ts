@@ -3,6 +3,7 @@ export const deps = [
   '@types/react',
   '@types/react-dom',
   'dahlia',
+  'dahlia-cli',
   'react',
   'react-dom',
   'typescript',
