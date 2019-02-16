@@ -11,9 +11,9 @@ export const tmpDir = `${projectDir}/src/.dahlia`
 
 export const entryPath = `${projectDir}/src/.dahlia/index.tsx`
 
-export const reactScripts = path.join(baseDir, 'node_modules', '.bin', 'react-scripts')
+export const reactScripts = path.join(projectDir, 'node_modules', '.bin', 'react-scripts')
 
-export const reactScriptsModulePath = path.join(baseDir, 'node_modules', 'react-scripts')
+export const reactScriptsModulePath = path.join(projectDir, 'node_modules', 'react-scripts')
 
 export const webpackConfigPath = `${reactScriptsModulePath}/config/webpack.config.js`
 
