@@ -1,6 +1,6 @@
 import spawn from 'cross-spawn'
 import { Command } from '@oclif/command'
-import { reactScripts } from '../lib/utils'
+import { reactScripts } from '../lib/paths'
 
 export default class Test extends Command {
   static description = 'Runs unit tests in project'

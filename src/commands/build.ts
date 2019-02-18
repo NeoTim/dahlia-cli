@@ -10,7 +10,7 @@ import {
   entryPath,
   reactScriptsModulePath,
   webpackConfigPath,
-} from '../lib/utils'
+} from '../lib/paths'
 
 import { entryText } from '../config'
 

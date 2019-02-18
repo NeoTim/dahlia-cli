@@ -30,17 +30,31 @@ export const filesToCheck = [
   'README.md',
 ]
 
-export const entryText = `import Dahlia from 'dahlia'
+export const entryText = `
+import Dahlia, { Config } from 'dahlia'
+import routes from './config/routes'
 
 const { NODE_ENV } = process.env
 
+let config: Config = {
+  routes,
+  root: '#root',
+} as Config
+
 if (NODE_ENV === 'development') {
-  // tslint:disable-next-line
-  const { config } = require('../config/config.dev')
-  Dahlia.bootstrap(config)
+  const { config: devConfig } = require('./config/config.dev')
+  config = {
+    ...config,
+    ...devConfig,
+  }
 } else {
-  // tslint:disable-next-line
-  const { config } = require('../config/config.prod')
-  Dahlia.bootstrap(config)
+  const { config: prodConfig } = require('./config/config.prod')
+  config = {
+    ...config,
+    ...prodConfig,
+  }
 }
+
+Dahlia.bootstrap(config)
+
 `
