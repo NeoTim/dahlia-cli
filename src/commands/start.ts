@@ -2,6 +2,7 @@ import { Command } from '@oclif/command'
 
 import { reactScriptsModulePath } from '../lib/paths'
 import { createEntryFile } from '../lib/createEntryFile'
+import { createConfigFile } from '../lib/createConfigFile'
 import { createRoutesFile } from '../lib/createRoutesFile'
 import { watchConfig } from '../lib/watchConfig'
 import { watchPages } from '../lib/watchPages'
@@ -19,6 +20,7 @@ export default class Start extends Command {
     process.env.NODE_ENV = process.env.NODE_ENV || 'development'
 
     createEntryFile()
+    createConfigFile()
     createRoutesFile()
     watchConfig()
     watchPages()

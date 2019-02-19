@@ -1,7 +1,7 @@
 import fs from 'fs-extra'
 import jetpack from 'fs-jetpack'
 
-import { pagesDir, tmpRoutesConfigPath } from './paths'
+import { pagesDir, tmpConfigDir, tmpRoutesConfigPath } from './paths'
 
 function last(arr: string[]): string {
   return arr[arr.length - 1]
@@ -62,6 +62,6 @@ export default routes;
 export const createRoutesFile = () => {
   const pages = jetpack.find(pagesDir, { matching: '**/*.tsx' })
   const routesText = getRoutesConfig(pages)
-
+  fs.ensureDirSync(tmpConfigDir)
   fs.writeFileSync(tmpRoutesConfigPath, routesText, { encoding: 'utf8' })
 }

@@ -10,6 +10,7 @@ export const dahliaConfigPath = `${projectDir}/dahlia.config.js`
 export const srcDir = `${projectDir}/src`
 
 export const tmpDir = `${srcDir}/.dahlia`
+export const tmpConfigDir = `${srcDir}/.dahlia/config`
 
 export const pagesDir = `${srcDir}/pages`
 
@@ -29,6 +30,8 @@ export const configs = [
 export const devConfigPath = `${projectDir}/src/config/config.dev.ts`
 
 export const tmpDevConfigPath = `${projectDir}/src/.dahlia/config/config.dev.ts`
+
+export const tmpProdConfigPath = `${projectDir}/src/.dahlia/config/config.prod.ts`
 
 export const tmpRoutesConfigPath = `${projectDir}/src/.dahlia/config/routes.ts`
 
