@@ -1,5 +1,6 @@
 import fs from 'fs-extra'
 import jetpack from 'fs-jetpack'
+import prettier from 'prettier'
 
 import { pagesDir, tmpConfigDir, tmpRoutesConfigPath } from './paths'
 
@@ -39,12 +40,10 @@ function getRoutesConfig(pages: string[]) {
     .join('\n')
   const routesString = pagesArr
     .map(item => {
-      return `
-  {
-    path: '${item.routerPath}',
-    component: ${item.pageName},
-  },
-        `
+      return `{
+  path: '${item.routerPath}',
+  component: ${item.pageName},
+},`
     })
     .join('\n')
 
@@ -63,5 +62,14 @@ export const createRoutesFile = () => {
   const pages = jetpack.find(pagesDir, { matching: '**/*.tsx' })
   const routesText = getRoutesConfig(pages)
   fs.ensureDirSync(tmpConfigDir)
-  fs.writeFileSync(tmpRoutesConfigPath, routesText, { encoding: 'utf8' })
+
+  const formatedText = prettier.format(routesText, {
+    semi: false,
+    tabWidth: 2,
+    singleQuote: true,
+    parser: 'babel',
+    trailingComma: 'all',
+  })
+
+  fs.writeFileSync(tmpRoutesConfigPath, formatedText, { encoding: 'utf8' })
 }
