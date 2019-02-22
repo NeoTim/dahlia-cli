@@ -12,11 +12,17 @@ function capitalizeFirstLetter(str: string) {
   return str.charAt(0).toUpperCase() + str.slice(1)
 }
 
+function getPageName(path: string = '') {
+  const fileName = last(path.split('/'))
+  const pageName = fileName.replace(/\.tsx$/, '').replace(/[\.\-\^\$]/g, '_')
+  return capitalizeFirstLetter(pageName)
+}
+
 function formatPages(pages: string[]) {
   return pages.map(item => {
     const HOME_PAGE = 'src/pages/index.tsx'
     let routerPath: string
-    const pageName = capitalizeFirstLetter(last(item.split('/')).replace(/\.tsx$/, ''))
+    const pageName = getPageName(item)
     const pageImportPath = item.replace(/^src/, '../..').replace(/\.tsx$/, '')
     if (item === HOME_PAGE) {
       routerPath = '/'
