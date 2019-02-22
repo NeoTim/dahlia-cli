@@ -27,6 +27,8 @@ export const configs = [
   },
 ]
 
+// console.log(__dirname)
+
 export const devConfigPath = `${projectDir}/src/config/config.dev.ts`
 
 export const tmpDevConfigPath = `${projectDir}/src/.dahlia/config/config.dev.ts`

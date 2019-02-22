@@ -56,5 +56,4 @@ if (NODE_ENV === 'development') {
 }
 
 Dahlia.bootstrap(config)
-
 `
