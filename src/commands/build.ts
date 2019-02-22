@@ -1,4 +1,3 @@
-import fs from 'fs-extra'
 import { Command } from '@oclif/command'
 
 import { reactScriptsModulePath } from '../utils/paths'

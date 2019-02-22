@@ -24,7 +24,7 @@ export default class Start extends Command {
     createRoutesFile()
     watchConfig()
     watchPages()
-    customizeWebpack()
+    customizeWebpack('development')
     customizeServer()
     disableCheckRequiredFilesPath()
     disableClearConsole()
