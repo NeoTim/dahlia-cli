@@ -2,7 +2,7 @@ import fs from 'fs-extra'
 import jetpack from 'fs-jetpack'
 import prettier from 'prettier'
 
-import { pagesDir, tmpConfigDir, tmpRoutesConfigPath } from './paths'
+import { routesPath, pagesDir, tmpConfigDir, tmpRoutesConfigPath } from './paths'
 
 function last(arr: string[]): string {
   return arr[arr.length - 1]
@@ -64,18 +64,36 @@ export default routes;
     `
 }
 
-export const createRoutesFile = () => {
-  const pages = jetpack.find(pagesDir, { matching: '**/*.tsx' })
-  const routesText = getRoutesConfig(pages)
-  fs.ensureDirSync(tmpConfigDir)
-
-  const formatedText = prettier.format(routesText, {
+function formatCode(text: string) {
+  return prettier.format(text, {
     semi: false,
     tabWidth: 2,
     singleQuote: true,
     parser: 'babel',
     trailingComma: 'all',
   })
+}
 
-  fs.writeFileSync(tmpRoutesConfigPath, formatedText, { encoding: 'utf8' })
+function writeFile(text: string) {
+  fs.writeFileSync(tmpRoutesConfigPath, text, { encoding: 'utf8' })
+}
+
+function writeFileFromRoutesFile() {
+  const routesConfig = fs.readFileSync(routesPath, { encoding: 'utf8' })
+  const text = routesConfig.replace(/\.\.\/pages/g, '../../pages')
+  writeFile(text)
+}
+
+export const createRoutesFile = () => {
+  fs.ensureDirSync(tmpConfigDir)
+
+  if (fs.existsSync(routesPath)) {
+    writeFileFromRoutesFile()
+    return
+  }
+
+  const pages = jetpack.find(pagesDir, { matching: '**/*.tsx' })
+  const routesText = getRoutesConfig(pages)
+  const code = formatCode(routesText)
+  writeFile(code)
 }

@@ -29,6 +29,10 @@ export const configs = [
 
 // console.log(__dirname)
 
+export const routesPath = `${srcDir}/config/routes.ts`
+
+export const tmpRoutesPath = `${srcDir}/.dahlia/config/routes.ts`
+
 export const devConfigPath = `${projectDir}/src/config/config.dev.ts`
 
 export const tmpDevConfigPath = `${projectDir}/src/.dahlia/config/config.dev.ts`

@@ -6,7 +6,6 @@ export const watchConfig = () => {
   configs.forEach(({ origin, target }) => {
     watch(origin).on('all', eventType => {
       if (['add', 'change'].includes(eventType)) {
-        // fs.createReadStream(origin).pipe(fs.createWriteStream(target))
         fs.copyFileSync(origin, target)
       }
     })

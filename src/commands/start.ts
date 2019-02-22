@@ -5,6 +5,7 @@ import { createEntryFile } from '../utils/createEntryFile'
 import { createConfigFile } from '../utils/createConfigFile'
 import { createRoutesFile } from '../utils/createRoutesFile'
 import { watchConfig } from '../utils/watchConfig'
+import { watchRoutes } from '../utils/watchRoutes'
 import { watchPages } from '../utils/watchPages'
 import { disableCheckRequiredFilesPath } from '../utils/disableCheckRequiredFilesPath'
 import { disableClearConsole } from '../utils/disableClearConsole'
@@ -23,6 +24,7 @@ export default class Start extends Command {
     createConfigFile()
     createRoutesFile()
     watchConfig()
+    watchRoutes()
     watchPages()
     customizeWebpack('development')
     customizeServer()

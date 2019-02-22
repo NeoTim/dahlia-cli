@@ -1,13 +1,12 @@
 import { watch } from 'chokidar'
-
-import { pageFiles } from './paths'
+import { routesPath } from './paths'
 import { createRoutesFile } from './createRoutesFile'
 
-export const watchPages = () => {
-  watch(pageFiles, {
+export const watchRoutes = () => {
+  watch(routesPath, {
     ignoreInitial: true,
   }).on('all', eventType => {
-    if (['add', 'unlink', 'unlinkDir'].includes(eventType)) {
+    if (['add', 'change', 'unlink'].includes(eventType)) {
       createRoutesFile()
     }
   })
